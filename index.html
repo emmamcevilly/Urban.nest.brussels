@@ -1,192 +1,537 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Urban Nest Brussels</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===== GLOBAL ===== */
-
-body {
-    margin: 0;
-    background: #f5f1ea;
-    font-family: 'Inter', sans-serif;
-    color: #4a3a2c;
+/* =========
+   PALETTE "MAISON ITALIENNE"
+   ========= */
+:root{
+  --bg: #f6f1e9;           /* pierre claire */
+  --paper: #ffffff;        /* blanc cassé */
+  --ink: #3f3026;          /* cacao */
+  --muted: #7a6657;        /* taupe */
+  --accent: #8a6b4f;       /* noisette */
+  --line: rgba(63,48,38,.12);
+  --shadow: 0 24px 60px rgba(0,0,0,.08);
+  --shadow-soft: 0 14px 40px rgba(0,0,0,.10);
+  --radius: 10px;
 }
 
-h1, h2 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
+/* =========
+   RESET + BASE
+   ========= */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a{ color:inherit; }
+
+/* =========
+   NAVBAR (fine, luxe)
+   ========= */
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(246,241,233,.72);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner{
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 14px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+}
+.brand{
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.nav-links{
+  display:flex;
+  gap: 18px;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.nav-links a{
+  text-decoration:none;
+  padding: 8px 10px;
+  border-radius: 999px;
+  transition: background .35s ease, color .35s ease;
+}
+.nav-links a:hover{
+  background: rgba(138,107,79,.10);
+  color: var(--ink);
 }
 
-/* ===== HERO ===== */
-
-.hero {
-    height: 90vh;
-    background: url("https://picsum.photos/1600/900?grayscale") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* =========
+   HERO (parallax léger + overlay)
+   ========= */
+.hero{
+  height: 84vh;
+  min-height: 560px;
+  position: relative;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  border-bottom: 1px solid var(--line);
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background: url("https://picsum.photos/1800/1100?grayscale") center/cover no-repeat;
+  transform: scale(1.04);
+  will-change: transform;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(246,241,233,.92) 0%,
+    rgba(246,241,233,.35) 55%,
+    rgba(246,241,233,.12) 100%
+  );
+}
+.hero-content{
+  position: relative;
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 80px 0 56px;
+}
+.kicker{
+  display:inline-block;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.55);
+}
+.hero h1{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(44px, 6vw, 78px);
+  margin: 18px 0 10px;
+  letter-spacing: .02em;
+}
+.hero p{
+  max-width: 56ch;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.85;
+  font-weight: 300;
+  font-size: 16px;
 }
 
-.hero h1 {
-    font-size: 60px;
-    letter-spacing: 3px;
-    background: rgba(255,255,255,0.7);
-    padding: 20px 40px;
+/* =========
+   LAYOUT WRAPPER
+   ========= */
+.wrap{
+  width: min(1120px, 92%);
+  margin: 0 auto;
 }
 
-/* ===== SECTION ===== */
-
-.section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 10%;
-    gap: 60px;
+/* =========
+   SECTIONS (alternées)
+   ========= */
+.section{
+  padding: 92px 0;
+}
+.section + .section{
+  border-top: 1px solid var(--line);
+}
+.split{
+  display:flex;
+  gap: 64px;
+  align-items:center;
+}
+.split.reverse{
+  flex-direction: row-reverse;
+}
+.copy{
+  flex: 1;
+  min-width: 280px;
+}
+.copy h2{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(32px, 3.2vw, 46px);
+  margin: 0 0 14px;
+  letter-spacing: .02em;
+}
+.copy p{
+  margin: 0 0 24px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-weight: 300;
+}
+.meta{
+  display:flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.meta span{
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.55);
 }
 
-.section img {
-    width: 50%;
-    border-radius: 6px;
+/* =========
+   MEDIA BLOCK (image luxe)
+   ========= */
+.media{
+  flex: 1.25;
+  min-width: 280px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(63,48,38,.10);
+  position: relative;
+}
+.media img{
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display:block;
+  transform: scale(1.01);
+  transition: transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.media:hover img{
+  transform: scale(1.06);
+}
+.media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 45%);
+  pointer-events:none;
 }
 
-.text {
-    width: 40%;
+/* =========
+   GRID (cards haut de gamme)
+   ========= */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 52px;
+}
+.card{
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(63,48,38,.10);
+  border-radius: var(--radius);
+  overflow:hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  transform: translateY(0);
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
+}
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
+}
+.card .thumb{
+  position: relative;
+  overflow:hidden;
+  height: 220px;
+}
+.card .thumb img{
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+  transform: scale(1.02);
+  transition: transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.card:hover .thumb img{
+  transform: scale(1.08);
+}
+.card .label{
+  padding: 18px 18px 6px;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.card .title{
+  padding: 0 18px 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  letter-spacing: .02em;
 }
 
-.text h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+/* =========
+   BOUTON luxe
+   ========= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  text-decoration:none;
+  border: 1px solid rgba(63,48,38,.18);
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.65);
+  color: var(--ink);
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1),
+              background .35s ease,
+              border-color .35s ease;
+}
+.btn:hover{
+  transform: translateY(-2px);
+  background: rgba(138,107,79,.10);
+  border-color: rgba(138,107,79,.35);
+}
+.arrow{
+  font-size: 16px;
+  line-height: 1;
+  transform: translateY(-1px);
 }
 
-.text p {
-    line-height: 1.8;
-    color: #7a5c45;
+/* =========
+   TRANSITION LUXUEUSE AU SCROLL
+   (fade + slide + blur léger)
+   ========= */
+.reveal{
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(6px);
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1), filter .9s ease;
+}
+.reveal.in{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-/* ===== GRID ===== */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 80px 10%;
+/* =========
+   FOOTER minimal
+   ========= */
+.footer{
+  border-top: 1px solid var(--line);
+  padding: 34px 0;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
-.card {
-    background: white;
-    padding-bottom: 20px;
-    border-radius: 6px;
-    overflow: hidden;
-    transition: 0.3s;
+/* =========
+   RESPONSIVE
+   ========= */
+@media (max-width: 980px){
+  .nav-links{ display:none; }
+  .split, .split.reverse{ flex-direction: column; }
+  .media img{ height: 420px; }
+  .grid{ grid-template-columns: 1fr; }
 }
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.card p {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: 500;
-    letter-spacing: 1px;
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media(max-width: 900px){
-    .section {
-        flex-direction: column;
-    }
-    .section img, .text {
-        width: 100%;
-    }
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-
-<div class="hero">
-    <h1>Urban Nest Brussels</h1>
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="brand">Urban Nest</div>
+    <div class="nav-links">
+      <a href="#day">Day</a>
+      <a href="#night">Night</a>
+      <a href="#collections">Collections</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 </div>
 
-<!-- SECTION 1 -->
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <span class="kicker reveal">Brussels • Maison urbaine</span>
+    <h1 class="reveal" style="transition-delay:.08s;">Urban Nest Brussels</h1>
+    <p class="reveal" style="transition-delay:.16s;">
+      Une expérience d’habitat au style naturel : lignes architecturales,
+      matières chaudes, lumière douce — un luxe discret, inspiré des maisons italiennes.
+    </p>
+  </div>
+</header>
 
-<div class="section">
-    <div class="text">
+<main class="wrap">
+
+  <!-- SECTION 1 -->
+  <section class="section" id="day">
+    <div class="split">
+      <div class="copy reveal">
         <h2>Day Collection</h2>
         <p>
-            Urban Nest combines modular elegance with natural finishes.
-            Inspired by soft textures and neutral palettes,
-            each space reflects calm urban living.
+          Tons sable, bois noisette et textures minérales.
+          Des espaces pensés pour respirer : confort, calme, et élégance sans ostentation.
         </p>
-    </div>
-    <img src="https://picsum.photos/800/600?1">
-</div>
+        <div class="meta">
+          <span>Lumière naturelle</span>
+          <span>Matières nobles</span>
+          <span>Minimal chic</span>
+        </div>
+        <div style="margin-top:26px;">
+          <a class="btn" href="#collections">Découvrir les espaces <span class="arrow">›</span></a>
+        </div>
+      </div>
 
-<!-- GRID -->
-
-<div class="grid">
-    <div class="card">
-        <img src="https://picsum.photos/600/400?2">
-        <p>Living Spaces</p>
+      <div class="media reveal" style="transition-delay:.08s;">
+        <img src="https://picsum.photos/1200/800?1" alt="Day collection">
+      </div>
     </div>
-    <div class="card">
-        <img src="https://picsum.photos/600/400?3">
-        <p>Storage</p>
-    </div>
-    <div class="card">
-        <img src="https://picsum.photos/600/400?4">
-        <p>Dining</p>
-    </div>
-</div>
 
-<!-- SECTION 2 (INVERSE) -->
+    <div class="grid" id="collections">
+      <a class="card reveal" href="page1.html" style="text-decoration:none;">
+        <div class="thumb"><img src="https://picsum.photos/900/700?2" alt=""></div>
+        <div class="label">Collection</div>
+        <div class="title">Living Spaces</div>
+      </a>
 
-<div class="section">
-    <img src="https://picsum.photos/800/600?5">
-    <div class="text">
+      <a class="card reveal" href="page2.html" style="text-decoration:none; transition-delay:.06s;">
+        <div class="thumb"><img src="https://picsum.photos/900/700?3" alt=""></div>
+        <div class="label">Collection</div>
+        <div class="title">Storage</div>
+      </a>
+
+      <a class="card reveal" href="page3.html" style="text-decoration:none; transition-delay:.12s;">
+        <div class="thumb"><img src="https://picsum.photos/900/700?4" alt=""></div>
+        <div class="label">Collection</div>
+        <div class="title">Dining</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="night">
+    <div class="split reverse">
+      <div class="copy reveal">
         <h2>Night Collection</h2>
         <p>
-            Soft lighting, warm materials and architectural balance
-            create intimate living spaces designed for serenity.
+          Une atmosphère feutrée : éclairage doux, contrastes cacao, tissus naturels.
+          Le confort devient une signature — élégante, silencieuse, intemporelle.
         </p>
-    </div>
-</div>
+        <div class="meta">
+          <span>Ambiance feutrée</span>
+          <span>Bois & lin</span>
+          <span>Silence</span>
+        </div>
+        <div style="margin-top:26px;">
+          <a class="btn" href="#contact">Prendre contact <span class="arrow">›</span></a>
+        </div>
+      </div>
 
-<!-- GRID 2 -->
+      <div class="media reveal" style="transition-delay:.08s;">
+        <img src="https://picsum.photos/1200/800?5" alt="Night collection">
+      </div>
+    </div>
 
-<div class="grid">
-    <div class="card">
-        <img src="https://picsum.photos/600/400?6">
-        <p>Wardrobes</p>
+    <div class="grid">
+      <a class="card reveal" href="page4.html" style="text-decoration:none;">
+        <div class="thumb"><img src="https://picsum.photos/900/700?6" alt=""></div>
+        <div class="label">Collection</div>
+        <div class="title">Wardrobes</div>
+      </a>
+
+      <a class="card reveal" href="page5.html" style="text-decoration:none; transition-delay:.06s;">
+        <div class="thumb"><img src="https://picsum.photos/900/700?7" alt=""></div>
+        <div class="label">Collection</div>
+        <div class="title">Walk-in Closets</div>
+      </a>
+
+      <a class="card reveal" href="page6.html" style="text-decoration:none; transition-delay:.12s;">
+        <div class="thumb"><img src="https://picsum.photos/900/700?8" alt=""></div>
+        <div class="label">Collection</div>
+        <div class="title">Beds</div>
+      </a>
     </div>
-    <div class="card">
-        <img src="https://picsum.photos/600/400?7">
-        <p>Walk-in Closets</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="split">
+      <div class="copy reveal">
+        <h2>Contact</h2>
+        <p>
+          Pour organiser une visite ou recevoir les détails (prix, disponibilité, conditions),
+          écrivez-nous. Réponse rapide.
+        </p>
+        <div class="meta">
+          <span>Email</span>
+          <span>WhatsApp</span>
+          <span>Visites</span>
+        </div>
+
+        <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn" href="mailto:exemple@email.com">Email <span class="arrow">›</span></a>
+          <a class="btn" href="page-contact.html">Formulaire <span class="arrow">›</span></a>
+        </div>
+      </div>
+
+      <div class="media reveal" style="transition-delay:.08s;">
+        <img src="https://picsum.photos/1200/800?9" alt="Contact">
+      </div>
     </div>
-    <div class="card">
-        <img src="https://picsum.photos/600/400?8">
-        <p>Beds</p>
-    </div>
-</div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© Urban Nest Brussels — Maison urbaine, esthétique naturelle.</div>
+</footer>
+
+<script>
+/* ===== Transition luxueuse (reveal) ===== */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('in');
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => io.observe(el));
+
+/* ===== Parallax hero très léger ===== */
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY || 0;
+  heroBg.style.transform = `translateY(${y * 0.12}px) scale(1.04)`;
+}, { passive: true });
+</script>
 
 </body>
 </html>
