@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Urban Nest Brussels</title>
+
+<style>
+
+/* ====== GLOBAL ====== */
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f1ea;
+    color: #4a3a2c;
+}
+
+h1 {
+    text-align: center;
+    padding: 60px 20px 20px 20px;
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 40px 0;
+}
+
+/* ====== CARD ====== */
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ====== CAROUSEL ====== */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+/* ====== BUTTON ====== */
+
+.button {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background-color: #7a5c45;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background-color: #4a3a2c;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Urban Nest Brussels</h1>
+
+<div class="container">
+
+    <!-- 12 CARDS -->
+    
+    <!-- CARD TEMPLATE -->
+    <!-- Duplique cette carte 12 fois -->
+
+    <div class="card">
+        <div class="carousel">
+            <img src="https://picsum.photos/400/300?1" class="active">
+            <img src="https://picsum.photos/400/300?2">
+            <img src="https://picsum.photos/400/300?3">
+        </div>
+        <a href="page1.html" class="button">Voir plus</a>
+    </div>
+
+    <div class="card">
+        <div class="carousel">
+            <img src="https://picsum.photos/400/300?4" class="active">
+            <img src="https://picsum.photos/400/300?5">
+            <img src="https://picsum.photos/400/300?6">
+        </div>
+        <a href="page2.html" class="button">Voir plus</a>
+    </div>
+
+    <!-- Tu peux copier-coller jusqu’à 12 -->
+
+</div>
+
+<script>
+
+/* ====== CAROUSEL AUTO ====== */
+
+const carousels = document.querySelectorAll(".carousel");
+
+carousels.forEach(carousel => {
+    const images = carousel.querySelectorAll("img");
+    let index = 0;
+
+    setInterval(() => {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+    }, 3000);
+});
+
+</script>
+
+</body>
+</html>
