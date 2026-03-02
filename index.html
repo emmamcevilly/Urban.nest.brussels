@@ -4,82 +4,116 @@
 <meta charset="UTF-8">
 <title>Urban Nest Brussels</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
 
-/* ====== GLOBAL ====== */
+/* ===== GLOBAL ===== */
 
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f1ea;
+    background: #f5f1ea;
+    font-family: 'Inter', sans-serif;
     color: #4a3a2c;
 }
 
-h1 {
-    text-align: center;
-    padding: 60px 20px 20px 20px;
-    font-size: 48px;
-    letter-spacing: 2px;
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
 }
 
-.container {
-    width: 90%;
-    margin: auto;
+/* ===== HERO ===== */
+
+.hero {
+    height: 90vh;
+    background: url("https://picsum.photos/1600/900?grayscale") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 60px;
+    letter-spacing: 3px;
+    background: rgba(255,255,255,0.7);
+    padding: 20px 40px;
+}
+
+/* ===== SECTION ===== */
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 10%;
+    gap: 60px;
+}
+
+.section img {
+    width: 50%;
+    border-radius: 6px;
+}
+
+.text {
+    width: 40%;
+}
+
+.text h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.text p {
+    line-height: 1.8;
+    color: #7a5c45;
+}
+
+/* ===== GRID ===== */
+
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    padding: 40px 0;
+    padding: 80px 10%;
 }
-
-/* ====== CARD ====== */
 
 .card {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    padding-bottom: 20px;
+    border-radius: 6px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-/* ====== CAROUSEL ====== */
-
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-}
-
-.carousel img {
+.card img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    display: none;
 }
 
-.carousel img.active {
-    display: block;
-}
-
-/* ====== BUTTON ====== */
-
-.button {
-    display: block;
+.card p {
     text-align: center;
-    padding: 15px;
-    background-color: #7a5c45;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
+    margin-top: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
-.button:hover {
-    background-color: #4a3a2c;
+/* ===== RESPONSIVE ===== */
+
+@media(max-width: 900px){
+    .section {
+        flex-direction: column;
+    }
+    .section img, .text {
+        width: 100%;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 </style>
@@ -87,55 +121,72 @@ h1 {
 
 <body>
 
-<h1>Urban Nest Brussels</h1>
+<!-- HERO -->
 
-<div class="container">
-
-    <!-- 12 CARDS -->
-    
-    <!-- CARD TEMPLATE -->
-    <!-- Duplique cette carte 12 fois -->
-
-    <div class="card">
-        <div class="carousel">
-            <img src="https://picsum.photos/400/300?1" class="active">
-            <img src="https://picsum.photos/400/300?2">
-            <img src="https://picsum.photos/400/300?3">
-        </div>
-        <a href="page1.html" class="button">Voir plus</a>
-    </div>
-
-    <div class="card">
-        <div class="carousel">
-            <img src="https://picsum.photos/400/300?4" class="active">
-            <img src="https://picsum.photos/400/300?5">
-            <img src="https://picsum.photos/400/300?6">
-        </div>
-        <a href="page2.html" class="button">Voir plus</a>
-    </div>
-
-    <!-- Tu peux copier-coller jusqu’à 12 -->
-
+<div class="hero">
+    <h1>Urban Nest Brussels</h1>
 </div>
 
-<script>
+<!-- SECTION 1 -->
 
-/* ====== CAROUSEL AUTO ====== */
+<div class="section">
+    <div class="text">
+        <h2>Day Collection</h2>
+        <p>
+            Urban Nest combines modular elegance with natural finishes.
+            Inspired by soft textures and neutral palettes,
+            each space reflects calm urban living.
+        </p>
+    </div>
+    <img src="https://picsum.photos/800/600?1">
+</div>
 
-const carousels = document.querySelectorAll(".carousel");
+<!-- GRID -->
 
-carousels.forEach(carousel => {
-    const images = carousel.querySelectorAll("img");
-    let index = 0;
+<div class="grid">
+    <div class="card">
+        <img src="https://picsum.photos/600/400?2">
+        <p>Living Spaces</p>
+    </div>
+    <div class="card">
+        <img src="https://picsum.photos/600/400?3">
+        <p>Storage</p>
+    </div>
+    <div class="card">
+        <img src="https://picsum.photos/600/400?4">
+        <p>Dining</p>
+    </div>
+</div>
 
-    setInterval(() => {
-        images[index].classList.remove("active");
-        index = (index + 1) % images.length;
-        images[index].classList.add("active");
-    }, 3000);
-});
+<!-- SECTION 2 (INVERSE) -->
 
-</script>
+<div class="section">
+    <img src="https://picsum.photos/800/600?5">
+    <div class="text">
+        <h2>Night Collection</h2>
+        <p>
+            Soft lighting, warm materials and architectural balance
+            create intimate living spaces designed for serenity.
+        </p>
+    </div>
+</div>
+
+<!-- GRID 2 -->
+
+<div class="grid">
+    <div class="card">
+        <img src="https://picsum.photos/600/400?6">
+        <p>Wardrobes</p>
+    </div>
+    <div class="card">
+        <img src="https://picsum.photos/600/400?7">
+        <p>Walk-in Closets</p>
+    </div>
+    <div class="card">
+        <img src="https://picsum.photos/600/400?8">
+        <p>Beds</p>
+    </div>
+</div>
 
 </body>
 </html>
