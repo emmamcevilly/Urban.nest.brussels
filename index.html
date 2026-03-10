@@ -608,6 +608,10 @@
   </footer>
 
   <script>
+   
+    if (window.location.hash) {
+  history.replaceState(null, null, window.location.pathname);
+}
     const revealEls = document.querySelectorAll('.reveal');
 
     const io = new IntersectionObserver((entries) => {
