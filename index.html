@@ -731,15 +731,49 @@
     /* =========================
        FONCTION DES FLÈCHES DU CARROUSEL
     ========================== */
-    function scrollCarousel(carouselId, direction) {
-      const carousel = document.getElementById(carouselId);
-      const scrollAmount = 380;
+   function scrollCarousel(carouselId, direction) {
+
+  const carousel = document.getElementById(carouselId);
+  const scrollAmount = 380;
+
+  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+  if (direction === 1) {
+
+    // Si on est à la fin → revenir au début
+    if (carousel.scrollLeft >= maxScroll - 5) {
+      carousel.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
+
+    } else {
 
       carousel.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
+        left: scrollAmount,
+        behavior: "smooth"
       });
+
     }
+
+  } else {
+
+    // Si on est au début → aller à la fin
+    if (carousel.scrollLeft <= 0) {
+
+      carousel.scrollTo({
+        left: maxScroll,
+        behavior: "smooth"
+      });
+
+    } else {
+
+      carousel.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth"
+      });
+
+  }
   </script>
 
 </body>
