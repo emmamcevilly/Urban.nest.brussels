@@ -1,559 +1,643 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title> Urban Nest Brussels</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Nest Brussels</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
-/* =========
-   PALETTE "MAISON ITALIENNE"
-   ========= */
-:root{
-  --bg: #f6f1e9;           /* pierre claire */
-  --paper: #ffffff;        /* blanc cassé */
-  --ink: #3f3026;          /* cacao */
-  --muted: #7a6657;        /* taupe */
-  --accent: #8a6b4f;       /* noisette */
-  --line: rgba(63,48,38,.12);
-  --shadow: 0 24px 60px rgba(0,0,0,.08);
-  --shadow-soft: 0 14px 40px rgba(0,0,0,.10);
-  --radius: 10px;
-}
+  <style>
+    :root{
+      --bg: #f6f1e9;
+      --paper: #ffffff;
+      --ink: #3f3026;
+      --muted: #7a6657;
+      --accent: #8a6b4f;
+      --line: rgba(63,48,38,.12);
+      --shadow: 0 24px 60px rgba(0,0,0,.08);
+      --shadow-soft: 0 14px 40px rgba(0,0,0,.10);
+      --radius: 10px;
+    }
 
-/* =========
-   RESET + BASE
-   ========= */
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-a{ color:inherit; }
+    *{
+      box-sizing: border-box;
+    }
 
-/* =========
-   NAVBAR (fine, luxe)
-   ========= */
-.nav{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(10px);
-  background: rgba(246,241,233,.72);
-  border-bottom: 1px solid var(--line);
-}
-.nav-inner{
-  width: min(1120px, 92%);
-  margin: 0 auto;
-  padding: 14px 0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 16px;
-}
-.brand{
-  font-family: "Cormorant Garamond", serif;
-  font-size: 22px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.nav-links{
-  display:flex;
-  gap: 18px;
-  font-size: 13px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.nav-links a{
-  text-decoration:none;
-  padding: 8px 10px;
-  border-radius: 999px;
-  transition: background .35s ease, color .35s ease;
-}
-.nav-links a:hover{
-  background: rgba(138,107,79,.10);
-  color: var(--ink);
-}
+    html{
+      scroll-behavior: smooth;
+    }
 
-/* =========
-   HERO (parallax léger + overlay)
-   ========= */
-.hero{
-  height: 84vh;
-  min-height: 560px;
-  position: relative;
-  display:flex;
-  align-items:flex-end;
-  overflow:hidden;
-  border-bottom: 1px solid var(--line);
-}
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background: url("https://picsum.photos/1800/1100?grayscale") center/cover no-repeat;
-  transform: scale(1.04);
-  will-change: transform;
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    to top,
-    rgba(246,241,233,.92) 0%,
-    rgba(246,241,233,.35) 55%,
-    rgba(246,241,233,.12) 100%
-  );
-}
-.hero-content{
-  position: relative;
-  width: min(1120px, 92%);
-  margin: 0 auto;
-  padding: 80px 0 56px;
-}
-.kicker{
-  display:inline-block;
-  font-size: 12px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255,255,255,.55);
-}
-.hero h1{
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 500;
-  font-size: clamp(44px, 6vw, 78px);
-  margin: 18px 0 10px;
-  letter-spacing: .02em;
-}
-.hero p{
-  max-width: 56ch;
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.85;
-  font-weight: 300;
-  font-size: 16px;
-}
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-/* =========
-   LAYOUT WRAPPER
-   ========= */
-.wrap{
-  width: min(1120px, 92%);
-  margin: 0 auto;
-}
+    a{
+      color: inherit;
+    }
 
-/* =========
-   SECTIONS (alternées)
-   ========= */
-.section{
-  padding: 92px 0;
-}
-.section + .section{
-  border-top: 1px solid var(--line);
-}
-.split{
-  display:flex;
-  gap: 64px;
-  align-items:center;
-}
-.split.reverse{
-  flex-direction: row-reverse;
-}
-.copy{
-  flex: 1;
-  min-width: 280px;
-}
-.copy h2{
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 500;
-  font-size: clamp(32px, 3.2vw, 46px);
-  margin: 0 0 14px;
-  letter-spacing: .02em;
-}
-.copy p{
-  margin: 0 0 24px;
-  color: var(--muted);
-  line-height: 1.9;
-  font-weight: 300;
-}
-.meta{
-  display:flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-.meta span{
-  border: 1px solid var(--line);
-  padding: 10px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.55);
-}
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(246,241,233,.72);
+      border-bottom: 1px solid var(--line);
+    }
 
-/* =========
-   MEDIA BLOCK (image luxe)
-   ========= */
-.media{
-  flex: 1.25;
-  min-width: 280px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--paper);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(63,48,38,.10);
-  position: relative;
-}
-.media img{
-  width: 100%;
-  height: 520px;
-  object-fit: cover;
-  display:block;
-  transform: scale(1.01);
-  transition: transform .9s cubic-bezier(.2,.8,.2,1);
-}
-.media:hover img{
-  transform: scale(1.06);
-}
-.media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 45%);
-  pointer-events:none;
-}
+    .nav-inner{
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-/* =========
-   GRID (cards haut de gamme)
-   ========= */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 52px;
-}
-.card{
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(63,48,38,.10);
-  border-radius: var(--radius);
-  overflow:hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,.05);
-  transform: translateY(0);
-  transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
-}
-.card:hover{
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-soft);
-}
-.card .thumb{
-  position: relative;
-  overflow:hidden;
-  height: 220px;
-}
-.card .thumb img{
-  width:100%;
-  height: 100%;
-  object-fit: cover;
-  display:block;
-  transform: scale(1.02);
-  transition: transform .9s cubic-bezier(.2,.8,.2,1);
-}
-.card:hover .thumb img{
-  transform: scale(1.08);
-}
-.card .label{
-  padding: 18px 18px 6px;
-  font-size: 12px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.card .title{
-  padding: 0 18px 18px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 22px;
-  letter-spacing: .02em;
-}
+    .brand{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
-/* =========
-   BOUTON luxe
-   ========= */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap: 10px;
-  text-decoration:none;
-  border: 1px solid rgba(63,48,38,.18);
-  padding: 12px 16px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.65);
-  color: var(--ink);
-  font-size: 12px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  transition: transform .35s cubic-bezier(.2,.8,.2,1),
-              background .35s ease,
-              border-color .35s ease;
-}
-.btn:hover{
-  transform: translateY(-2px);
-  background: rgba(138,107,79,.10);
-  border-color: rgba(138,107,79,.35);
-}
-.arrow{
-  font-size: 16px;
-  line-height: 1;
-  transform: translateY(-1px);
-}
+    .nav-links{
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-/* =========
-   TRANSITION LUXUEUSE AU SCROLL
-   (fade + slide + blur léger)
-   ========= */
-.reveal{
-  opacity: 0;
-  transform: translateY(18px);
-  filter: blur(6px);
-  transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1), filter .9s ease;
-}
-.reveal.in{
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
+    .nav-links a{
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: background .35s ease, color .35s ease;
+    }
 
-/* =========
-   FOOTER minimal
-   ========= */
-.footer{
-  border-top: 1px solid var(--line);
-  padding: 34px 0;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
+    .nav-links a:hover{
+      background: rgba(138,107,79,.10);
+      color: var(--ink);
+    }
 
-/* =========
-   RESPONSIVE
-   ========= */
-@media (max-width: 980px){
-  .nav-links{ display:none; }
-  .split, .split.reverse{ flex-direction: column; }
-  .media img{ height: 420px; }
-  .grid{ grid-template-columns: 1fr; }
-}
-</style>
+    .hero{
+      height: 84vh;
+      min-height: 560px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-bg{
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/1800/1100?grayscale") center/cover no-repeat;
+      transform: scale(1.04);
+      will-change: transform;
+    }
+
+    .hero::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(246,241,233,.92) 0%,
+        rgba(246,241,233,.35) 55%,
+        rgba(246,241,233,.12) 100%
+      );
+    }
+
+    .hero-content{
+      position: relative;
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 80px 0 56px;
+    }
+
+    .kicker{
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+    }
+
+    .hero h1{
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(44px, 6vw, 78px);
+      margin: 18px 0 10px;
+      letter-spacing: .02em;
+    }
+
+    .hero p{
+      max-width: 56ch;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+    .wrap{
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .section{
+      padding: 92px 0;
+    }
+
+    .section + .section{
+      border-top: 1px solid var(--line);
+    }
+
+    .split{
+      display: flex;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .split.reverse{
+      flex-direction: row-reverse;
+    }
+
+    .copy{
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .copy h2{
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.2vw, 46px);
+      margin: 0 0 14px;
+      letter-spacing: .02em;
+    }
+
+    .copy p{
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .meta{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .meta span{
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+    }
+
+    .media{
+      flex: 1.25;
+      min-width: 280px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(63,48,38,.10);
+      position: relative;
+    }
+
+    .media img{
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.01);
+      transition: transform .9s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .media:hover img{
+      transform: scale(1.06);
+    }
+
+    .media::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 45%);
+      pointer-events: none;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      border: 1px solid rgba(63,48,38,.18);
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      color: var(--ink);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), background .35s ease, border-color .35s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(138,107,79,.10);
+      border-color: rgba(138,107,79,.35);
+    }
+
+    .arrow{
+      font-size: 16px;
+      line-height: 1;
+      transform: translateY(-1px);
+    }
+
+    .carousel-section{
+      margin-top: 52px;
+    }
+
+    .carousel-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      gap: 20px;
+    }
+
+    .carousel-header h3{
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: .02em;
+    }
+
+    .carousel-buttons{
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-btn{
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(63,48,38,.18);
+      background: rgba(255,255,255,.7);
+      color: var(--ink);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all .3s ease;
+    }
+
+    .carousel-btn:hover{
+      background: rgba(138,107,79,.12);
+      transform: translateY(-2px);
+    }
+
+    .photo-carousel{
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+
+    .photo-carousel::-webkit-scrollbar{
+      display: none;
+    }
+
+    .carousel-item{
+      flex: 0 0 340px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .carousel-item img{
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 14px 40px rgba(0,0,0,.10);
+      transition: transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .carousel-item:hover img{
+      transform: scale(1.03);
+    }
+
+    .carousel-item span{
+      display: block;
+      margin-top: 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      letter-spacing: .02em;
+    }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(6px);
+      transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1), filter .9s ease;
+    }
+
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .footer{
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px){
+      .nav-links{
+        display: none;
+      }
+
+      .split,
+      .split.reverse{
+        flex-direction: column;
+      }
+
+      .media img{
+        height: 420px;
+      }
+
+      .carousel-item{
+        flex: 0 0 280px;
+      }
+
+      .carousel-item img{
+        height: 360px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<div class="nav">
-  <div class="nav-inner">
-    <div class="brand">Urban Nest</div>
-    <div class="nav-links">
-      <a href="#day">Home</a>
-      <a href="#night">Collection</a>
-      <a href="#collections">Booking</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</div>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">Urban Nest</div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-content">
-    <span class="kicker reveal">Brussels • Maison urbaine</span>
-    <h1 class="reveal" style="transition-delay:.08s;">Urban Nest Brussels</h1>
-    <p class="reveal" style="transition-delay:.16s;">
-      Une expérience d’habitat au style naturel : lignes architecturales,
-      matières chaudes, lumière douce — un luxe discret, inspiré des maisons italiennes.
-    </p>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <!-- SECTION 1 -->
-  <section class="section" id="day">
-    <div class="split">
-      <div class="copy reveal">
-        <h2>Day Collection</h2>
-        <p>
-          Tons sable, bois noisette et textures minérales.
-          Des espaces pensés pour respirer : confort, calme, et élégance sans ostentation.
-        </p>
-        <div class="meta">
-          <span>Lumière naturelle</span>
-          <span>Matières nobles</span>
-          <span>Minimal chic</span>
-        </div>
-        <div style="margin-top:26px;">
-          <a class="btn" href="#collections">Découvrir les espaces <span class="arrow">›</span></a>
-        </div>
+      <div class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#day">Day</a>
+        <a href="#night">Night</a>
+        <a href="#collections">Collections</a>
+        <a href="#contact">Contact</a>
       </div>
-
-      <div class="media reveal" style="transition-delay:.08s;">
-        <img src="https://picsum.photos/1200/800?1" alt="Day collection">
-      </div>
-    </div>
-
-  <div class="carousel-section reveal" id="collections">
-  <div class="carousel-header">
-    <h3>Collections</h3>
-    <div class="carousel-buttons">
-      <button class="carousel-btn prev" onclick="scrollCarousel('carousel1', -1)">&#10094;</button>
-      <button class="carousel-btn next" onclick="scrollCarousel('carousel1', 1)">&#10095;</button>
     </div>
   </div>
 
-  <div class="photo-carousel" id="carousel1">
-    <a href="page1.html" class="carousel-item">
-      <img src="https://picsum.photos/900/700?11" alt="Photo 1">
-      <span>Living Spaces</span>
-    </a>
+  <header class="hero" id="hero">
+    <div class="hero-bg" id="heroBg"></div>
 
-    <a href="page2.html" class="carousel-item">
-      <img src="https://picsum.photos/900/700?12" alt="Photo 2">
-      <span>Storage</span>
-    </a>
-
-    <a href="page3.html" class="carousel-item">
-      <img src="https://picsum.photos/900/700?13" alt="Photo 3">
-      <span>Dining</span>
-    </a>
-
-    <a href="page4.html" class="carousel-item">
-      <img src="https://picsum.photos/900/700?14" alt="Photo 4">
-      <span>Kitchen</span>
-    </a>
-
-    <a href="page5.html" class="carousel-item">
-      <img src="https://picsum.photos/900/700?15" alt="Photo 5">
-      <span>Bedroom</span>
-    </a>
-
-    <a href="page6.html" class="carousel-item">
-      <img src="https://picsum.photos/900/700?16" alt="Photo 6">
-      <span>Bathroom</span>
-    </a>
-  </div>
-</div>
-  </section>
-
-  <!-- SECTION 2 -->
-  <section class="section" id="night">
-    <div class="split reverse">
-      <div class="copy reveal">
-        <h2>Night Collection</h2>
-        <p>
-          Une atmosphère feutrée : éclairage doux, contrastes cacao, tissus naturels.
-          Le confort devient une signature — élégante, silencieuse, intemporelle.
-        </p>
-        <div class="meta">
-          <span>Ambiance feutrée</span>
-          <span>Bois & lin</span>
-          <span>Silence</span>
-        </div>
-        <div style="margin-top:26px;">
-          <a class="btn" href="#contact">Prendre contact <span class="arrow">›</span></a>
-        </div>
-      </div>
-
-      <div class="media reveal" style="transition-delay:.08s;">
-        <img src="https://picsum.photos/1200/800?5" alt="Night collection">
-      </div>
+    <div class="hero-content">
+      <span class="kicker reveal">Brussels • Maison urbaine</span>
+      <h1 class="reveal" style="transition-delay:.08s;">Urban Nest Brussels</h1>
+      <p class="reveal" style="transition-delay:.16s;">
+        Une expérience d’habitat au style naturel : lignes architecturales,
+        matières chaudes, lumière douce — un luxe discret, inspiré des maisons italiennes.
+      </p>
     </div>
+  </header>
 
-    <div class="grid">
-      <a class="card reveal" href="page4.html" style="text-decoration:none;">
-        <div class="thumb"><img src="https://picsum.photos/900/700?6" alt=""></div>
-        <div class="label">Collection</div>
-        <div class="title">Wardrobes</div>
-      </a>
+  <main class="wrap">
 
-      <a class="card reveal" href="page5.html" style="text-decoration:none; transition-delay:.06s;">
-        <div class="thumb"><img src="https://picsum.photos/900/700?7" alt=""></div>
-        <div class="label">Collection</div>
-        <div class="title">Walk-in Closets</div>
-      </a>
+    <section class="section" id="day">
+      <div class="split">
+        <div class="copy reveal">
+          <h2>Day Collection</h2>
+          <p>
+            Tons sable, bois noisette et textures minérales.
+            Des espaces pensés pour respirer : confort, calme, et élégance sans ostentation.
+          </p>
 
-      <a class="card reveal" href="page6.html" style="text-decoration:none; transition-delay:.12s;">
-        <div class="thumb"><img src="https://picsum.photos/900/700?8" alt=""></div>
-        <div class="label">Collection</div>
-        <div class="title">Beds</div>
-      </a>
-    </div>
-  </section>
+          <div class="meta">
+            <span>Lumière naturelle</span>
+            <span>Matières nobles</span>
+            <span>Minimal chic</span>
+          </div>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="split">
-      <div class="copy reveal">
-        <h2>Contact</h2>
-        <p>
-          Pour organiser une visite ou recevoir les détails (prix, disponibilité, conditions),
-          écrivez-nous. Réponse rapide.
-        </p>
-        <div class="meta">
-          <span>Email</span>
-          <span>WhatsApp</span>
-          <span>Visites</span>
+          <div style="margin-top:26px;">
+            <a class="btn" href="#collections">Découvrir les espaces <span class="arrow">›</span></a>
+          </div>
         </div>
 
-        <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
-          <a class="btn" href="mailto:exemple@email.com">Email <span class="arrow">›</span></a>
-          <a class="btn" href="page-contact.html">Formulaire <span class="arrow">›</span></a>
+        <div class="media reveal" style="transition-delay:.08s;">
+          <img src="https://picsum.photos/1200/800?1" alt="Day collection">
         </div>
       </div>
 
-      <div class="media reveal" style="transition-delay:.08s;">
-        <img src="https://picsum.photos/1200/800?9" alt="Contact">
+      <div class="carousel-section reveal" id="collections">
+        <div class="carousel-header">
+          <h3>Collections</h3>
+
+          <div class="carousel-buttons">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel1', -1)">&#10094;</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel1', 1)">&#10095;</button>
+          </div>
+        </div>
+
+        <div class="photo-carousel" id="carousel1">
+          <a href="page1.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?11" alt="Living Spaces">
+            <span>Living Spaces</span>
+          </a>
+
+          <a href="page2.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?12" alt="Storage">
+            <span>Storage</span>
+          </a>
+
+          <a href="page3.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?13" alt="Dining">
+            <span>Dining</span>
+          </a>
+
+          <a href="page4.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?14" alt="Kitchen">
+            <span>Kitchen</span>
+          </a>
+
+          <a href="page5.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?15" alt="Bedroom">
+            <span>Bedroom</span>
+          </a>
+
+          <a href="page6.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?16" alt="Bathroom">
+            <span>Bathroom</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <section class="section" id="night">
+      <div class="split reverse">
+        <div class="copy reveal">
+          <h2>Night Collection</h2>
+          <p>
+            Une atmosphère feutrée : éclairage doux, contrastes cacao, tissus naturels.
+            Le confort devient une signature — élégante, silencieuse, intemporelle.
+          </p>
 
-<footer class="footer">
-  <div class="wrap">© Urban Nest Brussels — Maison urbaine, esthétique naturelle.</div>
-</footer>
+          <div class="meta">
+            <span>Ambiance feutrée</span>
+            <span>Bois & lin</span>
+            <span>Silence</span>
+          </div>
 
-<script>
-/* ===== Transition luxueuse (reveal) ===== */
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('in');
-  });
-}, { threshold: 0.12 });
+          <div style="margin-top:26px;">
+            <a class="btn" href="#contact">Prendre contact <span class="arrow">›</span></a>
+          </div>
+        </div>
 
-revealEls.forEach(el => io.observe(el));
+        <div class="media reveal" style="transition-delay:.08s;">
+          <img src="https://picsum.photos/1200/800?5" alt="Night collection">
+        </div>
+      </div>
 
-/* ===== Parallax hero très léger ===== */
-const heroBg = document.getElementById('heroBg');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY || 0;
-  heroBg.style.transform = `translateY(${y * 0.12}px) scale(1.04)`;
-}, { passive: true });
-</script>
+      <div class="carousel-section reveal">
+        <div class="carousel-header">
+          <h3>Night Spaces</h3>
+
+          <div class="carousel-buttons">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel2', -1)">&#10094;</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel2', 1)">&#10095;</button>
+          </div>
+        </div>
+
+        <div class="photo-carousel" id="carousel2">
+          <a href="page7.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?21" alt="Wardrobes">
+            <span>Wardrobes</span>
+          </a>
+
+          <a href="page8.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?22" alt="Walk-in Closets">
+            <span>Walk-in Closets</span>
+          </a>
+
+          <a href="page9.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?23" alt="Beds">
+            <span>Beds</span>
+          </a>
+
+          <a href="page10.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?24" alt="Suite">
+            <span>Suite</span>
+          </a>
+
+          <a href="page11.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?25" alt="Private Room">
+            <span>Private Room</span>
+          </a>
+
+          <a href="page12.html" class="carousel-item">
+            <img src="https://picsum.photos/900/700?26" alt="Bathroom Details">
+            <span>Bathroom Details</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="split">
+        <div class="copy reveal">
+          <h2>Contact</h2>
+          <p>
+            Pour organiser une visite ou recevoir les détails,
+            écrivez-nous. Réponse rapide.
+          </p>
+
+          <div class="meta">
+            <span>Email</span>
+            <span>WhatsApp</span>
+            <span>Visites</span>
+          </div>
+
+          <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn" href="mailto:exemple@email.com">Email <span class="arrow">›</span></a>
+            <a class="btn" href="page-contact.html">Formulaire <span class="arrow">›</span></a>
+          </div>
+        </div>
+
+        <div class="media reveal" style="transition-delay:.08s;">
+          <img src="https://picsum.photos/1200/800?9" alt="Contact">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© Urban Nest Brussels — Maison urbaine, esthétique naturelle.</div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => io.observe(el));
+
+    const heroBg = document.getElementById('heroBg');
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY || 0;
+      heroBg.style.transform = `translateY(${y * 0.12}px) scale(1.04)`;
+    }, { passive: true });
+
+    function scrollCarousel(carouselId, direction) {
+      const carousel = document.getElementById(carouselId);
+      const scrollAmount = 380;
+
+      carousel.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  </script>
 
 </body>
 </html>
