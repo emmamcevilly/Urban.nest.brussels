@@ -696,9 +696,12 @@
     /* =========================
        SUPPRIMER L'ANCRE AU RECHARGEMENT
     ========================== */
-    if (window.location.hash) {
-      history.replaceState(null, null, window.location.pathname);
-    }
+  history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname);
+  }
 
     /* =========================
        ANIMATIONS AU SCROLL
