@@ -415,25 +415,47 @@ a{ color:inherit; }
       </div>
     </div>
 
-    <div class="grid" id="collections">
-      <a class="card reveal" href="page1.html" style="text-decoration:none;">
-        <div class="thumb"><img src="https://picsum.photos/900/700?2" alt=""></div>
-        <div class="label">Collection</div>
-        <div class="title">Living Spaces</div>
-      </a>
-
-      <a class="card reveal" href="page2.html" style="text-decoration:none; transition-delay:.06s;">
-        <div class="thumb"><img src="https://picsum.photos/900/700?3" alt=""></div>
-        <div class="label">Collection</div>
-        <div class="title">Storage</div>
-      </a>
-
-      <a class="card reveal" href="page3.html" style="text-decoration:none; transition-delay:.12s;">
-        <div class="thumb"><img src="https://picsum.photos/900/700?4" alt=""></div>
-        <div class="label">Collection</div>
-        <div class="title">Dining</div>
-      </a>
+  <div class="carousel-section reveal" id="collections">
+  <div class="carousel-header">
+    <h3>Collections</h3>
+    <div class="carousel-buttons">
+      <button class="carousel-btn prev" onclick="scrollCarousel('carousel1', -1)">&#10094;</button>
+      <button class="carousel-btn next" onclick="scrollCarousel('carousel1', 1)">&#10095;</button>
     </div>
+  </div>
+
+  <div class="photo-carousel" id="carousel1">
+    <a href="page1.html" class="carousel-item">
+      <img src="https://picsum.photos/900/700?11" alt="Photo 1">
+      <span>Living Spaces</span>
+    </a>
+
+    <a href="page2.html" class="carousel-item">
+      <img src="https://picsum.photos/900/700?12" alt="Photo 2">
+      <span>Storage</span>
+    </a>
+
+    <a href="page3.html" class="carousel-item">
+      <img src="https://picsum.photos/900/700?13" alt="Photo 3">
+      <span>Dining</span>
+    </a>
+
+    <a href="page4.html" class="carousel-item">
+      <img src="https://picsum.photos/900/700?14" alt="Photo 4">
+      <span>Kitchen</span>
+    </a>
+
+    <a href="page5.html" class="carousel-item">
+      <img src="https://picsum.photos/900/700?15" alt="Photo 5">
+      <span>Bedroom</span>
+    </a>
+
+    <a href="page6.html" class="carousel-item">
+      <img src="https://picsum.photos/900/700?16" alt="Photo 6">
+      <span>Bathroom</span>
+    </a>
+  </div>
+</div>
   </section>
 
   <!-- SECTION 2 -->
