@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+  <!-- =========================
+       HEAD / INFOS GÉNÉRALES
+  ========================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Urban Nest Brussels</title>
 
+  <!-- =========================
+       POLICES GOOGLE FONTS
+  ========================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
+    /* =========================
+       VARIABLES / COULEURS
+    ========================== */
     :root{
       --bg: #f6f1e9;
       --paper: #ffffff;
@@ -22,6 +32,9 @@
       --radius: 10px;
     }
 
+    /* =========================
+       BASE / RESET
+    ========================== */
     *{
       box-sizing: border-box;
     }
@@ -43,6 +56,9 @@
       color: inherit;
     }
 
+    /* =========================
+       NAVBAR
+    ========================== */
     .nav{
       position: sticky;
       top: 0;
@@ -90,6 +106,9 @@
       color: var(--ink);
     }
 
+    /* =========================
+       HERO / HEADER PRINCIPAL
+    ========================== */
     .hero{
       height: 84vh;
       min-height: 560px;
@@ -156,11 +175,17 @@
       font-size: 16px;
     }
 
+    /* =========================
+       CONTENEUR GLOBAL
+    ========================== */
     .wrap{
       width: min(1120px, 92%);
       margin: 0 auto;
     }
 
+    /* =========================
+       SECTIONS GÉNÉRALES
+    ========================== */
     .section{
       padding: 92px 0;
     }
@@ -179,6 +204,9 @@
       flex-direction: row-reverse;
     }
 
+    /* =========================
+       TEXTE DES SECTIONS
+    ========================== */
     .copy{
       flex: 1;
       min-width: 280px;
@@ -216,6 +244,9 @@
       background: rgba(255,255,255,.55);
     }
 
+    /* =========================
+       IMAGE PRINCIPALE DES SECTIONS
+    ========================== */
     .media{
       flex: 1.25;
       min-width: 280px;
@@ -248,6 +279,9 @@
       pointer-events: none;
     }
 
+    /* =========================
+       BOUTONS
+    ========================== */
     .btn{
       display: inline-flex;
       align-items: center;
@@ -276,6 +310,9 @@
       transform: translateY(-1px);
     }
 
+    /* =========================
+       CARROUSEL - STRUCTURE
+    ========================== */
     .carousel-section{
       margin-top: 52px;
     }
@@ -301,6 +338,9 @@
       gap: 10px;
     }
 
+    /* =========================
+       BOUTONS FLÈCHES DU CARROUSEL
+    ========================== */
     .carousel-btn{
       width: 44px;
       height: 44px;
@@ -318,6 +358,9 @@
       transform: translateY(-2px);
     }
 
+    /* =========================
+       PISTE DU CARROUSEL
+    ========================== */
     .photo-carousel{
       display: flex;
       gap: 22px;
@@ -331,6 +374,9 @@
       display: none;
     }
 
+    /* =========================
+       ÉLÉMENT INDIVIDUEL DU CARROUSEL
+    ========================== */
     .carousel-item{
       flex: 0 0 340px;
       text-decoration: none;
@@ -359,6 +405,9 @@
       letter-spacing: .02em;
     }
 
+    /* =========================
+       ANIMATIONS AU SCROLL
+    ========================== */
     .reveal{
       opacity: 0;
       transform: translateY(18px);
@@ -372,6 +421,9 @@
       filter: blur(0);
     }
 
+    /* =========================
+       FOOTER
+    ========================== */
     .footer{
       border-top: 1px solid var(--line);
       padding: 34px 0;
@@ -381,6 +433,9 @@
       text-transform: uppercase;
     }
 
+    /* =========================
+       RESPONSIVE / MOBILE
+    ========================== */
     @media (max-width: 980px){
       .nav-links{
         display: none;
@@ -408,6 +463,9 @@
 
 <body>
 
+  <!-- =========================
+       NAVBAR
+  ========================== -->
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">Urban Nest</div>
@@ -421,6 +479,9 @@
     </div>
   </div>
 
+  <!-- =========================
+       HERO / HAUT DE PAGE
+  ========================== -->
   <header class="hero" id="hero">
     <div class="hero-bg" id="heroBg"></div>
 
@@ -434,8 +495,14 @@
     </div>
   </header>
 
+  <!-- =========================
+       CONTENU PRINCIPAL
+  ========================== -->
   <main class="wrap">
 
+    <!-- =========================
+         SECTION 1 : COLLECTION
+    ========================== -->
     <section class="section" id="day">
       <div class="split">
         <div class="copy reveal">
@@ -461,6 +528,9 @@
         </div>
       </div>
 
+      <!-- =========================
+           CARROUSEL 1
+      ========================== -->
       <div class="carousel-section reveal" id="collections">
         <div class="carousel-header">
           <h3>Collections</h3>
@@ -505,6 +575,9 @@
       </div>
     </section>
 
+    <!-- =========================
+         SECTION 2 : BOOKING / NIGHT
+    ========================== -->
     <section class="section" id="night">
       <div class="split reverse">
         <div class="copy reveal">
@@ -530,6 +603,9 @@
         </div>
       </div>
 
+      <!-- =========================
+           CARROUSEL 2
+      ========================== -->
       <div class="carousel-section reveal">
         <div class="carousel-header">
           <h3>Night Spaces</h3>
@@ -574,6 +650,9 @@
       </div>
     </section>
 
+    <!-- =========================
+         SECTION 3 : CONTACT
+    ========================== -->
     <section class="section" id="contact">
       <div class="split">
         <div class="copy reveal">
@@ -603,15 +682,27 @@
 
   </main>
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
   <footer class="footer">
     <div class="wrap">© Urban Nest Brussels — Maison urbaine, esthétique naturelle.</div>
   </footer>
 
+  <!-- =========================
+       SCRIPT / JAVASCRIPT
+  ========================== -->
   <script>
-   
+    /* =========================
+       SUPPRIMER L'ANCRE AU RECHARGEMENT
+    ========================== */
     if (window.location.hash) {
-  history.replaceState(null, null, window.location.pathname);
-}
+      history.replaceState(null, null, window.location.pathname);
+    }
+
+    /* =========================
+       ANIMATIONS AU SCROLL
+    ========================== */
     const revealEls = document.querySelectorAll('.reveal');
 
     const io = new IntersectionObserver((entries) => {
@@ -624,6 +715,9 @@
 
     revealEls.forEach(el => io.observe(el));
 
+    /* =========================
+       PARALLAX LÉGER DU HERO
+    ========================== */
     const heroBg = document.getElementById('heroBg');
 
     window.addEventListener('scroll', () => {
@@ -631,6 +725,9 @@
       heroBg.style.transform = `translateY(${y * 0.12}px) scale(1.04)`;
     }, { passive: true });
 
+    /* =========================
+       FONCTION DES FLÈCHES DU CARROUSEL
+    ========================== */
     function scrollCarousel(carouselId, direction) {
       const carousel = document.getElementById(carouselId);
       const scrollAmount = 380;
