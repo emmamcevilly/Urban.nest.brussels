@@ -458,25 +458,93 @@
         height: 360px;
       }
     }
+  /* =========================
+       PROPOSITION NAVBAR
+    ========================== */
+  .dropdown{
+  position: relative;
+}
+
+.dropdown-toggle{
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 999px;
+  transition: background .35s ease, color .35s ease;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-toggle{
+  background: rgba(138,107,79,.10);
+  color: var(--ink);
+}
+
+.dropdown-menu{
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(246,241,233,.97);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 180px;
+  box-shadow: var(--shadow-soft);
+  z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dropdown-menu a{
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: background .25s ease, color .25s ease;
+}
+
+.dropdown-menu a:hover{
+  background: rgba(138,107,79,.10);
+  color: var(--ink);
+} 
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVBAR
-  ========================== -->
-  <div class="nav">
-    <div class="nav-inner">
-      <div class="brand">Urban Nest</div>
+<!-- =========================
+     NAVBAR
+========================== -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="brand">Urban Nest</div>
 
-      <div class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#night">Booking</a>
-        <a href="#contact">Contact</a>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle">Collections ›</a>
+        <div class="dropdown-menu">
+          <a href="#penthouse">Le Penthouse</a>
+          <a href="#loft">Le Loft</a>
+          <a href="#appartements">Appartements</a>
+          <a href="#studio">Le Studio</a>
+        </div>
       </div>
+
+      <a href="#contact">Contact</a>
     </div>
+
   </div>
+</div>
 
   <!-- =========================
        HERO / HAUT DE PAGE
