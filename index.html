@@ -463,6 +463,8 @@
     ========================== */
   .dropdown{
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-toggle{
@@ -492,7 +494,15 @@
   box-shadow: var(--shadow-soft);
   z-index: 100;
 }
-
+    .dropdown::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+    
 .dropdown:hover .dropdown-menu{
   display: flex;
   flex-direction: column;
