@@ -499,16 +499,31 @@
       transform: translateY(2px);
     }
 
-    .about-quote{
-      margin-top: 22px;
-      padding: 18px 20px;
-      border-left: 2px solid rgba(138,107,79,.35);
-      background: rgba(255,255,255,.46);
-      border-radius: 0 12px 12px 0;
+      .about-quote-center{
+      max-width: 900px;
+      margin: 54px auto 18px;
+      padding: 26px 30px;
+      text-align: center;
       font-family: "Cormorant Garamond", serif;
-      font-size: 28px;
-      line-height: 1.35;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.25;
       letter-spacing: .01em;
+      color: var(--ink);
+      position: relative;
+    }
+
+    .about-quote-center::before,
+    .about-quote-center::after{
+      content: "";
+      display: block;
+      width: 90px;
+      height: 1px;
+      background: rgba(138,107,79,.28);
+      margin: 0 auto 22px;
+    }
+
+    .about-quote-center::after{
+      margin: 22px auto 0;
     }
 
     .section{
