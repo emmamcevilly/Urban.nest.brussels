@@ -1630,10 +1630,9 @@
       }
     }
   }
-</script>
-  
+
 /* =========================
-       FONCTION CHANGEMENT HERO
+       FONCTION ALEATOIRE HERO
     ========================== */
 </script>
     const heroImages = [
@@ -1646,7 +1645,8 @@
 
     const random = heroImages[Math.floor(Math.random() * heroImages.length)];
     document.getElementById('heroBg').style.backgroundImage = `url('${random}')`;
-  </script>
+ 
+</script>
 
 </body>
 </html>
