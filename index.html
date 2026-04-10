@@ -122,7 +122,9 @@
     .hero-bg{
       position: absolute;
       inset: 0;
-      background: url("CityOfBrussels.jpg") center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       transform: scale(1.04);
       will-change: transform;
     }
@@ -1629,6 +1631,22 @@
     }
   }
 </script>
+  
+/* =========================
+       FONCTION CHANGEMENT HERO
+    ========================== */
+</script>
+    const heroImages = [
+      "Pictures/hero1.jpg",
+      "Pictures/hero2.jpg",
+      "Pictures/hero3.jpg",
+      "Pictures/hero4.jpg",
+      "Pictures/hero5.jpg"
+    ];
+
+    const random = heroImages[Math.floor(Math.random() * heroImages.length)];
+    document.getElementById('heroBg').style.backgroundImage = `url('${random}')`;
+  </script>
 
 </body>
 </html>
