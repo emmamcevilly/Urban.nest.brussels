@@ -1642,7 +1642,10 @@
       "CenterOfBrussels.jpg"
     ];
 
-    const random = heroImages[Math.floor(Math.random() * heroImages.length)];
+    const lastHero = sessionStorage.getItem('lastHero');
+    const filtered = heroImages.filter(img => img !== lastHero);
+    const random = filtered[Math.floor(Math.random() * filtered.length)];
+    sessionStorage.setItem('lastHero', random);
     document.getElementById('heroBg').style.backgroundImage = `url('${random}')`;
  
 </script>
