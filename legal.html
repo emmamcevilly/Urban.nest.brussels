@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal Notice — Urban Nest Brussels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f1e9; --paper: #ffffff; --ink: #3f3026; --muted: #7a6657;
+      --accent: #8a6b4f; --line: rgba(63,48,38,.12); --shadow-soft: 0 14px 40px rgba(0,0,0,.10); --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: rgba(246,241,233,.72); border-bottom: 1px solid var(--line); }
+    .nav-inner { width: min(1120px, 92%); margin: 0 auto; padding: 14px 0; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-family: "Cormorant Garamond", serif; font-size: 22px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--ink); }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; border: 1px solid rgba(63,48,38,.18); padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.65); color: var(--ink); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; transition: all .35s ease; }
+    .back-btn:hover { background: rgba(138,107,79,.10); border-color: rgba(138,107,79,.35); transform: translateY(-1px); }
+    .page-header { border-bottom: 1px solid var(--line); padding: 72px 0 56px; background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent); }
+    .page-header .wrap { width: min(1120px, 92%); margin: 0 auto; }
+    .kicker { display: inline-block; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.55); margin-bottom: 18px; }
+    .page-header h1 { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: clamp(40px, 5vw, 64px); margin: 0 0 12px; letter-spacing: .02em; color: var(--ink); }
+    .page-header .subtitle { color: var(--muted); font-weight: 300; font-size: 15px; line-height: 1.7; margin: 0; }
+    .content-wrap { width: min(780px, 92%); margin: 0 auto; padding: 72px 0 100px; }
+    .legal-section { margin-bottom: 52px; }
+    .legal-section h2 { font-family: "Cormorant Garamond", serif; font-size: 28px; font-weight: 500; margin: 0 0 16px; letter-spacing: .02em; color: var(--ink); }
+    .legal-section p { color: var(--muted); line-height: 1.9; font-weight: 300; font-size: 15px; margin: 0 0 14px; }
+    .legal-section ul { color: var(--muted); line-height: 1.9; font-weight: 300; font-size: 15px; padding-left: 20px; margin: 0 0 14px; }
+    .legal-section ul li { margin-bottom: 6px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .info-row { padding: 16px 18px; background: rgba(255,255,255,.65); border: 1px solid var(--line); border-radius: 10px; }
+    .info-row strong { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+    .info-row span { color: var(--muted); font-size: 14px; font-weight: 300; line-height: 1.6; }
+    .divider { border: none; border-top: 1px solid var(--line); margin: 52px 0; }
+    .last-updated { display: inline-block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.55); margin-bottom: 48px; }
+    .contact-box { background: rgba(255,255,255,.72); border: 1px solid rgba(63,48,38,.10); border-radius: 16px; padding: 32px; box-shadow: var(--shadow-soft); }
+    .contact-box h3 { font-family: "Cormorant Garamond", serif; font-size: 26px; font-weight: 500; margin: 0 0 12px; }
+    .contact-box p { color: var(--muted); line-height: 1.8; font-weight: 300; font-size: 15px; margin: 0 0 18px; }
+    .contact-box a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(138,107,79,.3); }
+    .contact-box a:hover { border-color: var(--accent); }
+    .footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .footer .wrap { width: min(1120px, 92%); margin: 0 auto; }
+    .reveal { opacity: 0; transform: translateY(16px); filter: blur(4px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1), filter .8s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); filter: blur(0); }
+    @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">Urban Nest</a>
+    <a class="back-btn" href="index.html">‹ Back to site</a>
+  </div>
+</div>
+
+<div class="page-header">
+  <div class="wrap">
+    <span class="kicker">Legal — Urban Nest Brussels</span>
+    <h1>Legal Notice</h1>
+    <p class="subtitle">Mandatory legal information about Urban Nest Brussels SRL.</p>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <span class="last-updated reveal">Last updated: April 2026</span>
+
+  <div class="legal-section reveal">
+    <h2>1. Company Identification</h2>
+    <p>In accordance with Belgian law, the following information identifies the publisher of this website:</p>
+    <div class="info-grid">
+      <div class="info-row">
+        <strong>Company name</strong>
+        <span>Urban Nest Brussels SRL</span>
+      </div>
+      <div class="info-row">
+        <strong>Legal form</strong>
+        <span>Société à Responsabilité Limitée (SRL)</span>
+      </div>
+      <div class="info-row">
+        <strong>Registered address</strong>
+        <span>[Your address]<br>Brussels, Belgium</span>
+      </div>
+      <div class="info-row">
+        <strong>Enterprise number (BCE)</strong>
+        <span>BE [XXXXXXXXXX]</span>
+      </div>
+      <div class="info-row">
+        <strong>VAT number</strong>
+        <span>BE [XXXXXXXXXX]</span>
+      </div>
+      <div class="info-row">
+        <strong>Email</strong>
+        <span>contact@urbannest.be</span>
+      </div>
+      <div class="info-row">
+        <strong>Country</strong>
+        <span>Belgium</span>
+      </div>
+      <div class="info-row">
+        <strong>Registered at</strong>
+        <span>Banque-Carrefour des Entreprises (BCE)</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="legal-section reveal">
+    <h2>2. Website Publisher</h2>
+    <p>This website is published and managed by Urban Nest Brussels SRL. The director of publication is <strong>[Name of director]</strong>, acting in their capacity as manager of the company.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="legal-section reveal">
+    <h2>3. Hosting</h2>
+    <p>This website is hosted by:</p>
+    <ul>
+      <li><strong>Host name:</strong> [Hosting provider name]</li>
+      <li><strong>Address:</strong> [Hosting provider address]</li>
+      <li><strong>Website:</strong> [Hosting provider URL]</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+
+  <div class="legal-section reveal">
+    <h2>4. Intellectual Property</h2>
+    <p>The entire content of this website — including but not limited to photographs, text, logos, graphic elements, and layout — is the exclusive property of Urban Nest Brussels SRL and is protected by Belgian and international copyright law.</p>
+    <p>Any reproduction, distribution, modification, or use of the content of this website, in whole or in part, for any purpose whatsoever, is strictly prohibited without the prior written authorisation of Urban Nest Brussels SRL.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="legal-section reveal">
+    <h2>5. Limitation of Liability</h2>
+    <p>Urban Nest Brussels makes every effort to ensure that the information published on this website is accurate and up to date. However, we cannot guarantee the completeness, accuracy, or timeliness of the information at all times.</p>
+    <p>We accept no liability for any direct or indirect damage arising from access to, or inability to access, this website, nor from the use of the information it contains.</p>
+    <p>Links to third-party websites are provided for convenience only. Urban Nest Brussels is not responsible for the content or practices of any external sites.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="legal-section reveal">
+    <h2>6. Applicable Law</h2>
+    <p>This website and its contents are governed by Belgian law. Any dispute relating to this website shall fall within the exclusive jurisdiction of the courts of Brussels, Belgium.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="legal-section reveal">
+    <h2>7. Personal Data & Cookies</h2>
+    <p>For information on how we process your personal data, please consult our <a href="privacy.html" style="color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(138,107,79,.3);">Privacy Policy</a>. For information on cookies, please consult our <a href="cookies.html" style="color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(138,107,79,.3);">Cookie Policy</a>.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="contact-box reveal">
+    <h3>A question or a concern?</h3>
+    <p>If you have any questions regarding this legal notice, please contact us directly.</p>
+    <a href="mailto:contact@urbannest.be">contact@urbannest.be</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">© Urban Nest Brussels — All rights reserved, 2026.</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
