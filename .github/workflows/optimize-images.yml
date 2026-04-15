@@ -1,68 +1,36 @@
-name: Optimize Images (WebP compressed)
+name: Optimize Images
 
 on:
   push:
+    paths:
+      - 'Pictures/**'
 
 jobs:
   compress-images:
-    # Skip auto commits
-    if: "!contains(github.event.head_commit.message, 'Auto')"
-
+    if: ${{ !contains(github.event.head_commit.message, 'Auto optimize images') }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install tools
+      - name: Install WebP
         run: |
           sudo apt-get update
-          sudo apt-get install -y webp imagemagick
+          sudo apt-get install -y webp
 
-      - name: Convert all images to *_compressed.webp
+      - name: Convert images to WebP
         run: |
-          find Pictures -type f \( \
-            -iname "*.jpg" -o \
-            -iname "*.jpeg" -o \
-            -iname "*.png" -o \
-            -iname "*.webp" -o \
-            -iname "*.avif" \
-          \) | while read file; do
-
-            base="${file%.*}"
-            output="${base}_compressed.webp"
-
-            # Skip if already compressed version
-            if [[ "$file" == *"_compressed.webp" ]]; then
-              continue
-            fi
-
-            # Skip if already exists
-            if [ -f "$output" ]; then
-              echo "Skipping $file (already processed)"
-              continue
-            fi
-
-            echo "Processing $file → $output"
-
-            # Use ImageMagick for universal decoding + resize
-            convert "$file" -resize '1400x800>' -quality 85 "$output"
-          done
-
-      - name: Update HTML & CSS references
-        run: |
-          find . -type f \( -name "*.html" -o -name "*.css" \) | while read file; do
-            
-            # Replace all supported formats with _compressed.webp
-            sed -i -E 's/\.(jpg|jpeg|png|webp|avif)/_compressed.webp/gI' "$file"
-          
+          find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
+            echo "Processing $file"
+            cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp"
+            rm "$file"
           done
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-
-          git add .
-          git diff --cached --quiet || git commit -m "Auto optimize images (_compressed.webp)"
+          git add Pictures
+          git diff --cached --quiet || git commit -m "Auto optimize images"
           git push
