@@ -1,4 +1,18 @@
-name: Optimize Images
+- name: Optimize images
+  run: |
+    find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
+      echo "Processing $file"
+
+      cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp" || continue
+      rm "$file"
+    done
+
+    find Pictures -type f -iname "*.webp" | while read file; do
+      echo "Recompressing $file"
+
+      cwebp -q 85 "$file" -o "${file}.tmp" || continue
+      mv "${file}.tmp" "$file"
+    done
 
 on:
   push:
