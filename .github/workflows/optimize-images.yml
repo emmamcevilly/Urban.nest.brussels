@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'Pictures/**'
+  workflow_dispatch:
 
 jobs:
   compress-images:
@@ -21,12 +22,19 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y webp
 
-      - name: Convert images to WebP
+      - name: Optimize images
         run: |
-          find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
+          find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | while read file; do
             echo "Processing $file"
-            cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp"
-            rm "$file"
+
+            if [[ "$file" == *.webp ]]; then
+              mv "$file" "${file}.bak"
+              cwebp -q 85 "${file}.bak" -o "$file"
+              rm "${file}.bak"
+            else
+              cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp"
+              rm "$file"
+            fi
           done
 
       - name: Commit changes
