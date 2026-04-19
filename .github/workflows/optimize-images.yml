@@ -1,18 +1,4 @@
-- name: Optimize images
-  run: |
-    find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
-      echo "Processing $file"
-
-      cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp" || continue
-      rm "$file"
-    done
-
-    find Pictures -type f -iname "*.webp" | while read file; do
-      echo "Recompressing $file"
-
-      cwebp -q 85 "$file" -o "${file}.tmp" || continue
-      mv "${file}.tmp" "$file"
-    done
+name: Optimize Images
 
 on:
   push:
@@ -36,19 +22,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y webp
 
-      - name: Optimize images
+      - name: Optimize JPG and PNG
         run: |
-          find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | while read file; do
+          find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
             echo "Processing $file"
+            cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp" || continue
+            rm "$file"
+          done
 
-            if [[ "$file" == *.webp ]]; then
-              mv "$file" "${file}.bak"
-              cwebp -q 85 "${file}.bak" -o "$file"
-              rm "${file}.bak"
-            else
-              cwebp -resize 1400 800 -q 85 "$file" -o "${file%.*}.webp"
-              rm "$file"
-            fi
+      - name: Optimize existing WebP
+        run: |
+          find Pictures -type f -iname "*.webp" | while read file; do
+            echo "Recompressing $file"
+            cp "$file" "${file}.bak" || continue
+            cwebp -q 85 "${file}.bak" -o "${file}.tmp" || continue
+            mv "${file}.tmp" "$file"
+            rm -f "${file}.bak"
           done
 
       - name: Commit changes
