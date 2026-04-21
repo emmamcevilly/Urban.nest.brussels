@@ -77,3 +77,23 @@ const filtered = heroImages.filter(img => img !== lastHero);
 const random = filtered[Math.floor(Math.random() * filtered.length)];
 sessionStorage.setItem('lastHero', random);
 document.getElementById('heroBg').style.backgroundImage = `url('${random}')`;
+
+/* =========================
+   MENU BURGER MOBILE
+========================== */
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+// Ferme le menu quand on clique un lien
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
