@@ -317,7 +317,9 @@ a {
 
 .media img {
   width: 100%;
-  height: 520px;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  max-height: 520px;
   object-fit: cover;
   display: block;
   transform: scale(1.01);
@@ -442,7 +444,9 @@ a {
 
 .carousel-item img {
   width: 100%;
-  height: 420px;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  max-height: 420px;
   object-fit: cover;
   border-radius: 10px;
   display: block;
@@ -742,8 +746,8 @@ a {
     flex-direction: column;
   }
 
-  .media img {
-    height: 420px;
+.media img {
+    height: auto;
   }
 
   .carousel-item {
@@ -751,7 +755,7 @@ a {
   }
 
   .carousel-item img {
-    height: 360px;
+    height: auto;
   }
 
   .about-grid {
