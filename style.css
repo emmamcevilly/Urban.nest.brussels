@@ -155,6 +155,20 @@ a {
   color: var(--ink);
 }
 
+.dropdown-group-label {
+  display: block;
+  padding: 10px 20px 4px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #999;
+  pointer-events: none;
+}
+
+.dropdown-sub {
+  padding-left: 28px !important;
+}
+
 /* =========================
    HERO / HEADER PRINCIPAL
 ========================== */
