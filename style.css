@@ -853,7 +853,7 @@ a {
   }
 
   .dropdown-menu {
-    display: flex !important;
+    display: none;
     position: static;
     box-shadow: none;
     border: none;
@@ -862,8 +862,25 @@ a {
     min-width: unset;
   }
 
+  .dropdown-menu.mobile-open {
+    display: flex;
+  }
+
   .dropdown-menu a {
     padding: 8px 10px;
+  }
+
+   .dropdown-group-label {
+    padding: 10px 10px 4px;
+    font-size: 10px;
+  }
+
+  .dropdown-sub {
+    padding-left: 20px !important;
+  }
+
+  .footer-group-label {
+    margin-top: 10px;
   }
 }
 
