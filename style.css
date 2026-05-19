@@ -671,6 +671,16 @@ a {
   color: var(--ink);
 }
 
+.footer-group-label {
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-top: 14px;
+  list-style: none;
+  pointer-events: none;
+}
+
 .footer-col address {
   font-style: normal;
   display: flex;
