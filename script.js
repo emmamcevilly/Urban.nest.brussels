@@ -24,16 +24,6 @@ const io = new IntersectionObserver((entries) => {
 revealEls.forEach(el => io.observe(el));
 
 /* =========================
-   PARALLAX LÉGER DU HERO
-========================== */
-const heroBg = document.getElementById('heroBg');
-
-window.addEventListener('scroll', () => {
-  const y = window.scrollY || 0;
-  heroBg.style.transform = `translateY(${y * 0.12}px) scale(1.04)`;
-}, { passive: true });
-
-/* =========================
    FONCTION DES FLÈCHES DU CARROUSEL
 ========================== */
 function scrollCarousel(carouselId, direction) {
@@ -60,23 +50,6 @@ function scrollCarousel(carouselId, direction) {
 
   }
 }
-
-/* =========================
-   IMAGE ALÉATOIRE DU HERO
-========================== */
-const heroImages = [
-  "AtomiumBrussels.jpg",
-  "CityCenterOfBrussels.jpg",
-  "SubwayBrussels.jpg",
-  "EuropeanParliamentBrussels.jpg",
-  "CenterOfBrussels.jpg"
-];
-
-const lastHero = sessionStorage.getItem('lastHero');
-const filtered = heroImages.filter(img => img !== lastHero);
-const random = filtered[Math.floor(Math.random() * filtered.length)];
-sessionStorage.setItem('lastHero', random);
-document.getElementById('heroBg').style.backgroundImage = `url('${random}')`;
 
 /* =========================
    MENU BURGER MOBILE
