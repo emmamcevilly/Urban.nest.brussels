@@ -173,7 +173,7 @@ a {
    HERO / HEADER PRINCIPAL
 ========================== */
 .hero.hero-logo {
-  background: var(--bg);
+  background: #fffaf7
   display: flex;
   align-items: center;
   justify-content: center;
