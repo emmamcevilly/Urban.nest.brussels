@@ -1355,6 +1355,19 @@ img {
   }
 }
 
+.apt-address-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.55);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: .20em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
 
