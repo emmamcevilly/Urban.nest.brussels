@@ -1368,6 +1368,40 @@ img {
   color: var(--muted);
 }
 
+.apt-page-split {
+  display: flex;
+  gap: 64px;
+  align-items: center;
+  padding-bottom: 56px;
+}
+
+.apt-page-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.apt-page-right {
+  flex: 1.2;
+  min-width: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.apt-page-right img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 980px) {
+  .apt-page-split {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
 
