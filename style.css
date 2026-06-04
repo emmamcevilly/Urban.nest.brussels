@@ -849,7 +849,7 @@ img {
    APARTMENT PAGE — PHOTO GRID
 ========================== */
 .apt-page-hero {
-  background: #fffaf7;
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
   padding: 56px 0 0;
 }
