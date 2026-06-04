@@ -1,49 +1,39 @@
 name: Optimize Images
 
 on:
-  push:
-    paths:
-      - 'Pictures/**'
-  workflow_dispatch:
+ push:
+   paths:
+     - 'Pictures/**'
+ workflow_dispatch:
 
 jobs:
-  compress-images:
-    if: ${{ !contains(github.event.head_commit.message, 'Auto optimize images') }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+ compress-images:
+   if: ${{ !contains(github.event.head_commit.message, 'Auto optimize images') }}
+   runs-on: ubuntu-latest
+   permissions:
+     contents: write
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+   steps:
+     - name: Checkout repository
+       uses: actions/checkout@v4
 
-      - name: Install WebP
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y webp
+     - name: Install WebP
+       run: |
+         sudo apt-get update
+         sudo apt-get install -y webp
 
-      - name: Optimize JPG and PNG
-        run: |
-          find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
-            echo "Processing $file"
-            cwebp -resize 1400 0 -q 85 "$file" -o "${file%.*}.webp" || continue
-            rm "$file"
-          done
+     - name: Convert JPG and PNG to WebP
+       run: |
+         find Pictures -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read file; do
+           echo "Processing $file"
+           cwebp -q 82 "$file" -o "${file%.*}.webp" || continue
+           rm "$file"
+         done
 
-      - name: Optimize existing WebP
-        run: |
-          find Pictures -type f -iname "*.webp" | while read file; do
-            echo "Recompressing $file"
-            cp "$file" "${file}.bak" || continue
-            cwebp -q 85 "${file}.bak" -o "${file}.tmp" || continue
-            mv "${file}.tmp" "$file"
-            rm -f "${file}.bak"
-          done
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add Pictures
-          git diff --cached --quiet || git commit -m "Auto optimize images"
-          git push
+     - name: Commit changes
+       run: |
+         git config user.name "github-actions"
+         git config user.email "github-actions@github.com"
+         git add Pictures
+         git diff --cached --quiet || git commit -m "Auto optimize images"
+         git push
