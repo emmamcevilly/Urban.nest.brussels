@@ -200,7 +200,7 @@ img {
 }
 
 .hero-logo-img {
-  width: clamp(300px, 50vw, 580px);
+  width: clamp(300px, 65vw, 580px);
   height: auto;
   display: block;
   margin: 0 auto 0px;
