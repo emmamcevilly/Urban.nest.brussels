@@ -203,7 +203,7 @@ img {
   width: clamp(260px, 42vw, 500px);
   height: auto;
   display: block;
-  margin: 0 auto 8px;
+  margin: 0 auto 0px;
   object-fit: contain;
 }
 
